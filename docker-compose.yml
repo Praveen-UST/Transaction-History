@@ -1,20 +1,22 @@
 version: '3.8'
 
 services:
-  bank-app:
-    image: bank:v1
-    build: .
-    ports:
-      - '3000:3000'
-
-    environment:
-      - MONGODB_URI:'mongodb://localhost:27017/transactionhistory'
-
-    depends_on:
-      - mongodb
   mongodb:
     image: mongo:latest
+    container_name: mongo
     ports:
       - '27017:27017'
 
-
+  bank-app:
+    build: .
+    image: bank:v1
+    ports:
+      - '3000:3000'
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/transactionhistory
+      - AWS_REGION=${AWS_REGION}
+      - AWS_QUEUE_URL=${AWS_QUEUE_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    depends_on:
+      - mongodb
