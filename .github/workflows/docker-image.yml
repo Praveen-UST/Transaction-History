@@ -6,7 +6,7 @@ on:
 
     branches:
 
-      - master
+      - main
 
 jobs:
 
@@ -39,12 +39,11 @@ jobs:
         uses: docker/build-push-action@v5 
 
         with:
-
-          context: . 
+          context: .
 
           file: ./Dockerfile 
 
           push: true 
 
-          tags: Praveen-UST/ust-retail-app:v1.1.0
+          tags: praveenust/ust-retail-app:v1.1.0
 
