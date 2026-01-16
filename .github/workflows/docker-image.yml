@@ -46,5 +46,5 @@ jobs:
 
           push: true 
 
-          tags: muralisocial123/ust-retail-app:v1.1.0
+          tags: Praveen-UST/ust-retail-app:v1.1.0
 
